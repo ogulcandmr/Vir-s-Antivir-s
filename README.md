@@ -1,59 +1,70 @@
-# 🛡️ Virüs & Antivirüs Simülasyonu ve Steganografi Aracı
+Proje, gerçek sistemlere zarar vermeden yalnızca erişilebilirlik (Availability) kavramı üzerinden ilerler ve tamamen eğitim amaçlıdır.
 
-Bu proje, **Siber Güvenlik** dersi kapsamında, zararlı yazılımların çalışma mantığını (saldırı) ve savunma sistemlerinin bu tehditleri nasıl bertaraf ettiğini (savunma) simüle etmek amacıyla geliştirilmiş bir **C# Windows Forms** uygulamasıdır.
+⸻
 
-Proje, veriye zarar vermeden sadece **erişilebilirliğini (Availability)** hedef alan bir simülasyon içerir ve eğitim amaçlıdır.
+🎯 Projenin Amacı
+	•	Zararlı yazılımların kullanıcı üzerinde oluşturduğu etkiyi göstermek
+	•	Antivirüs yazılımlarının temel mantığını kavratmak
+	•	Dosya gizleme ve veri saklama tekniklerini (steganografi) tanıtmak
 
-## 🚀 Özellikler
+⸻
 
-Proje üç ana modülden oluşur:
+🔧 Modüller ve İşlevler
 
-### 1. Virüs Simülasyon Modülü (Saldırı)
-- Seçilen hedef klasördeki tüm dosyaları tarar.
-- Dosyaların özniteliklerini (File Attributes) değiştirerek **"Gizli" (Hidden)** hale getirir.
-- Bu işlem, dosyaları silmez ancak son kullanıcı için görünmez hale getirerek bir fidye yazılımı (ransomware) paniği simüle eder.
+🔴 1. Virüs Simülasyonu (Saldırı Senaryosu)
+	•	Kullanıcının seçtiği klasördeki dosyaları tarar.
+	•	Dosyaların özniteliklerini değiştirerek gizli (Hidden) hale getirir.
+	•	Dosyalar silinmez; yalnızca görünmez yapılarak bir fidye yazılımı (ransomware) hissi oluşturulur.
 
-### 2. Antivirüs Modülü (Savunma & İyileştirme)
-- Hedef klasörü analiz eder.
-- **Heuristik (Davranışsal) Analiz:** Normal şartlarda gizli olmaması gereken dosyaların gizli olduğunu bir "anomali" olarak tespit eder.
-- Tespit edilen dosyaların gizlilik özniteliklerini kaldırarak sistemi eski haline getirir.
+⸻
 
-### 3. Steganografi Modülü (Veri Gizleme)
-- Bir çalıştırılabilir dosyanın (.exe), masum bir resim dosyasının (.jpg) içine nasıl gizlenebileceğini gösterir.
-- **Binary Copy** yöntemi ile resim dosyasının hex kodlarının sonuna exe dosyasının kodlarını ekler.
-- Sonuçta oluşan resim normal şekilde açılırken, içerisinde gizli veri barındırır.
+🟢 2. Antivirüs Modülü (Savunma & Kurtarma)
+	•	Aynı klasörü analiz eder.
+	•	Davranışsal (heuristik) analiz kullanarak normalde gizli olmaması gereken dosyaları tespit eder.
+	•	Gizli hale getirilmiş dosyaların özniteliklerini temizleyerek eski hâline döndürür.
 
----
+⸻
 
-## 🛠️ Kullanılan Teknolojiler ve Yöntemler
+🖼️ 3. Steganografi Modülü (Veri Gizleme)
+	•	Bir .exe dosyasının, bir .jpg resim dosyasının içine nasıl gizlenebileceğini gösterir.
+	•	Binary (ikili) kopyalama yöntemi kullanılır.
+	•	Ortaya çıkan resim normal şekilde açılabilir, ancak içinde gizli bir dosya barındırır.
 
-- **Dil:** C# (.NET Framework)
-- **Arayüz:** Windows Forms (WinForms)
-- **Kütüphaneler:** `System.IO`, `System.Drawing`
-- **Teknikler:**
-  - `FileAttributes.Hidden`: Dosya gizleme işlemi için.
-  - `Bitwise Operations`: Özniteliklerin üzerine yazmak yerine, mevcut özelliklere ekleme/çıkarma yapmak için (`|` ve `& ~` operatörleri).
-  - `FileStream`: Dosyaların binary (ikili) modda okunup birleştirilmesi için.
+⸻
 
----
+🧪 Kullanılan Teknolojiler
+	•	Programlama Dili: C# (.NET Framework)
+	•	Arayüz: Windows Forms
+	•	Kütüphaneler:
+	•	System.IO
+	•	System.Drawing
 
-## 💻 Kurulum ve Kullanım
+Kullanılan Teknikler
+	•	FileAttributes.Hidden ile dosya gizleme
+	•	Bit düzeyinde işlemler (| ve & ~) ile öznitelik yönetimi
+	•	FileStream ile binary dosya okuma ve birleştirme
 
-1. Projeyi Visual Studio ile açın (`Virüs_Antivirüs.sln`).
-2. **Başlat (Start)** butonuna basarak uygulamayı çalıştırın.
-3. Masaüstünde test amaçlı bir klasör oluşturun (Örn: `TestKlasor`) ve içine dosyalar atın.
-4. Uygulamadan bu klasörü seçin.
-5. **Kırmızı Buton:** Dosyaları gizler (Virüs Simülasyonu).
-6. **Yeşil Buton:** Dosyaları kurtarır (Antivirüs Simülasyonu).
+⸻
 
----
+▶️ Çalıştırma ve Test
+	1.	Projeyi Visual Studio’da açın (Virüs_Antivirüs.sln)
+	2.	Uygulamayı çalıştırın
+	3.	Masaüstünde test için bir klasör oluşturun
+	4.	Klasörü uygulama üzerinden seçin
+	5.	Kırmızı Buton: Dosyaları gizler (Virüs simülasyonu)
+	6.	Yeşil Buton: Dosyaları geri getirir (Antivirüs)
 
-## ⚠️ Yasal Uyarı (Disclaimer)
+⸻
 
-Bu yazılım tamamen **eğitim ve öğrenim** amaçlı geliştirilmiştir. İçerisindeki kodlar, sistem dosyalarına kalıcı zarar vermez. Steganografi ve dosya manipülasyonu tekniklerinin kötü amaçlı kullanımı yasaktır ve geliştirici bundan sorumlu tutulamaz.
+⚠️ Yasal ve Etik Uyarı
 
----
+Bu proje yalnızca akademik ve öğretici amaçlarla hazırlanmıştır.
+Kodlar gerçek zararlı yazılım değildir ve kalıcı hasar oluşturmaz.
+Steganografi ve dosya manipülasyonu tekniklerinin kötüye kullanımı hukuka aykırıdır. Tüm sorumluluk kullanıcıya aittir.
 
-**Geliştirici:** [Adın Soyadın]  
-**Ders:** [Dersin Adı]  
-**Tarih:** 2025
+⸻
+
+👤 Geliştirici
+
+Oğulcan Demir
+Ders:  NTP
